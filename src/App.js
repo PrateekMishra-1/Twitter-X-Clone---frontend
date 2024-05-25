@@ -2,10 +2,10 @@ import './App.css';
 import Body from './components/Body';
 import { Toaster } from "react-hot-toast"
 
-import axios from 'axios';
+// import axios from 'axios';
 
-axios.defaults.baseURL = "https://twitter-x-clone-backend-1-p865.onrender.com"
-axios.defaults.withCredentials = true;
+// axios.defaults.baseURL = "https://twitter-x-clone-backend-1-p865.onrender.com"
+// axios.defaults.withCredentials = true;
 
 function App() {
   return (
