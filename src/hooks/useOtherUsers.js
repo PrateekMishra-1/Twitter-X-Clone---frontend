@@ -2,10 +2,11 @@ import axios from "axios";
 import { USER_API_END_POINT } from "../utils/constant";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { getMyProfile, getOtherUsers } from "../redux/userSlice";
+import { getOtherUsers } from "../redux/userSlice";
 
 const useOtherUsers = (id) => {
     const dispatch = useDispatch();
+
     useEffect(() => {
         const fetchOtherUsers = async () => {
             try {
@@ -15,10 +16,17 @@ const useOtherUsers = (id) => {
                 console.log(res);
                 dispatch(getOtherUsers(res.data.otherUsers));
             } catch (error) {
-                console.log(error);
+                console.error("Error fetching other users:", error);
+                if (error.response && error.response.status === 401) {
+                    console.error("Unauthorized access. Please log in.");
+                }
             }
+        };
+
+        if (id) {
+            fetchOtherUsers();
         }
-        fetchOtherUsers();
-    }, []);
+    }, [id, dispatch]);
 };
+
 export default useOtherUsers;
