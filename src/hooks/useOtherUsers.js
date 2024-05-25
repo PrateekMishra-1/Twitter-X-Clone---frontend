@@ -18,7 +18,9 @@ const useOtherUsers = (id) => {
                 console.log(error);
             }
         }
+        if(id){
         fetchOtherUsers();
-    },[]);
+        }
+    },[id]);
 };
 export default useOtherUsers;
